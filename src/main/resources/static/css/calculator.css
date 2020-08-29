@@ -5,3 +5,15 @@
 .inputZoneInner {
     padding: 30px 0;
 }
+
+.outputZoneOuter {
+    background-color: #EFF1E4;
+}
+
+.outputZoneInner {
+    padding: 30px 0;
+}
+
+.resultCol {
+    padding: 0;
+}
