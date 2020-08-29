@@ -1,3 +1,7 @@
-.btn-light {
-    border: 1px solid black;
+.inputZoneOuter {
+    background-color: #E4F1F1;
+}
+
+.inputZoneInner {
+    padding: 30px 0;
 }
