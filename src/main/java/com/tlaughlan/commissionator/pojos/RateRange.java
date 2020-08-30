@@ -1,4 +1,4 @@
-package com.tlaughlan.commissionator.models;
+package com.tlaughlan.commissionator.pojos;
 
 public class RateRange {
 
