@@ -1,17 +1,26 @@
 package com.tlaughlan.commissionator;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class CommissionatorController {
 
     @GetMapping("/calculator")
-    public String calculator(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "calculator";
+    public String showCalc(InputDetails inputDetails) { return "calculator"; }
+
+    @PostMapping("/calculator")
+    public String checkInputDetails(@Valid InputDetails inputDetails, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "calculator";
+        }
+
+        return "redirect:/";
     }
 
 }

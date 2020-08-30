@@ -8,76 +8,79 @@
     <link th:href="@{/css/calculator.css}" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container col-md-8">
-            <div class="justify-content-start">
-                <h1>Commissionator</h1>
+<nav class="navbar navbar-light bg-light">
+    <div class="container col-md-8">
+        <div class="justify-content-start">
+            <h1>Commissionator</h1>
+        </div>
+        <div class="justify-content-end align-self-end">
+            <p>by Toby Laughlan</p>
+        </div>
+    </div>
+</nav>
+<main role="main">
+    <div class="container inputZoneOuter col-12">
+        <div class="container inputZoneInner col-md-8">
+            <div class="row justify-content-center text-muted">
+                <p>Fill out the form to see your sales commission.</p>
             </div>
-            <div class="justify-content-end align-self-end">
-                <p>by Toby Laughlan</p>
+            <form th:action="@{/calculator}" th:object="${inputDetails}" method="post">
+                <div class="form-group">
+                    <label for="actualInput">Actual</label>
+                    <input class="form-control" type="text" name="actual" id="actualInput">
+                    <p th:if="${#fields.hasErrors('actual')}" th:errors="*{actual}">Actual errors</p>
+                    <small class="form-text text-muted">
+                        How much did you sell?
+                    </small>
+                    <div class="invalid-feedback">Actual is mandatory.</div>
+                </div>
+                <div class="form-group">
+                    <label for="targetInput">Target</label>
+                    <input class="form-control" type="text" name="target" id="targetInput">
+                    <p th:if="${#fields.hasErrors('target')}" th:errors="*{target}">Target errors</p>
+                    <small class="form-text text-muted">
+                        What was your sales target?
+                    </small>
+                    <div class="invalid-feedback">Target is mandatory.</div>
+                </div>
+                <div class="form-group">
+                    <label for="motcInput">MOTC</label>
+                    <input class="form-control" type="text" name="motc" id="motcInput">
+                    <p th:if="${#fields.hasErrors('motc')}" th:errors="*{motc}">Motc errors</p>
+                    <small class="form-text text-muted">
+                        Monthly On Target Commission.
+                    </small>
+                    <div class="invalid-feedback">MOTC is mandatory.</div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn  btn-info">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container outputZoneOuter col-12">
+        <div class="container outputZoneInner col-md-8">
+            <div class="row justify-content-center">
+                <p>Your results:</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><p>Achievement:</p></div>
+                <div class="col-md-3"><b><p th:text="${name}" /></b></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><p>Commission rate:</p></div>
+                <div class="col-md-3"><b><p th:text="${name}" /></b></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3"><h4>Commission:</h4></div>
+                <div class="col-md-3"><h4 class="success"><p th:text="'$'+${name}" /></h4></div>
             </div>
         </div>
-    </nav>
-    <main role="main">
-        <div class="container inputZoneOuter col-12">
-            <div class="container inputZoneInner col-md-8">
-                <div class="row justify-content-center text-muted">
-                    <p>Fill out the form to see your sales commission.</p>
-                </div>
-                <form class="needs-validation" novalidate>
-                    <div class="form-group">
-                        <label for="actualInput">Actual</label>
-                        <input class="form-control" type="text" name="actual" id="actualInput" required>
-                        <small class="form-text text-muted">
-                            How much did you sell?
-                        </small>
-                        <div class="invalid-feedback">Actual is mandatory.</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="targetInput">Target</label>
-                        <input class="form-control" type="text" name="actual" id="targetInput" required>
-                        <small class="form-text text-muted">
-                            What was your sales target?
-                        </small>
-                        <div class="invalid-feedback">Target is mandatory.</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="motcInput">MOTC</label>
-                        <input class="form-control" type="text" name="actual" id="motcInput" required>
-                        <small class="form-text text-muted">
-                            Monthly On Target Commission.
-                        </small>
-                        <div class="invalid-feedback">MOTC is mandatory.</div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn  btn-info">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="container outputZoneOuter col-12">
-            <div class="container outputZoneInner col-md-8">
-                <div class="row justify-content-center">
-                    <p>Your results:</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"><p>Achievement:</p></div>
-                    <div class="col-md-3"><b><p th:text="${name}" /></b></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"><p>Commission rate:</p></div>
-                    <div class="col-md-3"><b><p th:text="${name}" /></b></div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-3"><h4>Commission:</h4></div>
-                    <div class="col-md-3"><h4 class="success"><p th:text="'$'+${name}" /></h4></div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <script type="text/javascript" th:src="@{/js/jquery/jquery-3.5.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/bootstrap-4.5.2-dist/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/calculator.js}"></script>
+    </div>
+</main>
+<script type="text/javascript" th:src="@{/js/jquery/jquery-3.5.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap-4.5.2-dist/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/calculator.js}"></script>
 </body>
 </html>
