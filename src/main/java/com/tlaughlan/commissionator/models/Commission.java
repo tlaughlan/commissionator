@@ -7,7 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
-public class InputDetails {
+public class Commission {
 
     @NotNull(message = Constants.nullMessage)
     @Positive(message = Constants.positiveIntegerMessage)
@@ -21,6 +21,36 @@ public class InputDetails {
     @Min(value = 1, message = Constants.numberRangeMessage)
     @Max(value = 10000, message = Constants.numberRangeMessage)
     private Integer motc;
+
+    private Float achievement;
+
+    private Float commissionRate;
+
+    private Float totalCommission;
+
+    public Float getAchievement() {
+        return achievement;
+    }
+
+    public void setAchievement(Float achievement) {
+        this.achievement = achievement;
+    }
+
+    public Float getCommissionRate() {
+        return commissionRate;
+    }
+
+    public void setCommissionRate(Float commissionRate) {
+        this.commissionRate = commissionRate;
+    }
+
+    public Float getTotalCommission() {
+        return totalCommission;
+    }
+
+    public void setTotalCommission(Float totalCommission) {
+        this.totalCommission = totalCommission;
+    }
 
     public Integer getActual() {
         return actual;
