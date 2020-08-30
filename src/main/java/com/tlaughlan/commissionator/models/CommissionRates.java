@@ -21,6 +21,15 @@ public class CommissionRates {
         determineBaseAndRate(achievement);
     }
 
+    private void determineBaseAndRate (float achievement) {
+        for (RateRange rateRange : rateRanges) {
+            if (rateRange.getAchievementFloor() <= achievement && rateRange.getAchievementCeiling() > achievement) {
+                this.base = rateRange.getBase();
+                this.rate = rateRange.getRate();
+            }
+        }
+    }
+
     private List<RateRange> generateRateRanges (float[][] rateData) {
         List<RateRange> rateRanges = new ArrayList<>();
         for (int x = 0; x < rateData.length; x++) {
@@ -29,12 +38,11 @@ public class CommissionRates {
         return rateRanges;
     }
 
-    private void determineBaseAndRate (float achievement) {
-        for (RateRange rateRange : rateRanges) {
-            if (rateRange.getAchievementFloor() <= achievement && rateRange.getAchievementCeiling() > achievement) {
-                this.base = rateRange.getBase();
-                this.rate = rateRange.getRate();
-            }
-        }
+    public float getBase() {
+        return base;
+    }
+
+    public float getRate() {
+        return rate;
     }
 }
