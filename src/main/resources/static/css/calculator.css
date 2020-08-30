@@ -1,19 +1,19 @@
-.inputZoneOuter {
+.input-zone-outer {
     background-color: #E4F1F1;
 }
 
-.inputZoneInner {
+.input-zone-inner {
     padding: 30px 0;
 }
 
-.outputZoneOuter {
+.output-zone-outer {
     background-color: #EFF1E4;
 }
 
-.outputZoneInner {
+.output-zone-inner {
     padding: 30px 0;
 }
 
-.resultCol {
-    padding: 0;
+.validation-text {
+    color: red;
 }

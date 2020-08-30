@@ -1,5 +1,6 @@
-package com.tlaughlan.commissionator;
+package com.tlaughlan.commissionator.controllers;
 
+import com.tlaughlan.commissionator.models.InputDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;

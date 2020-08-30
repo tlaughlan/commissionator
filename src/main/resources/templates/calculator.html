@@ -19,38 +19,29 @@
     </div>
 </nav>
 <main role="main">
-    <div class="container inputZoneOuter col-12">
-        <div class="container inputZoneInner col-md-8">
+    <div class="container input-zone-outer col-12">
+        <div class="container input-zone-inner col-md-8">
             <div class="row justify-content-center text-muted">
                 <p>Fill out the form to see your sales commission.</p>
             </div>
             <form th:action="@{/calculator}" th:object="${inputDetails}" method="post">
                 <div class="form-group">
                     <label for="actualInput">Actual</label>
-                    <input class="form-control" type="text" name="actual" id="actualInput">
-                    <p th:if="${#fields.hasErrors('actual')}" th:errors="*{actual}">Actual errors</p>
-                    <small class="form-text text-muted">
-                        How much did you sell?
-                    </small>
-                    <div class="invalid-feedback">Actual is mandatory.</div>
+                    <input class="form-control" type="text" name="actual" id="actualInput"
+                           placeholder="How much did you sell? e.g. 579">
+                    <p class="validation-text" th:if="${#fields.hasErrors('actual')}" th:errors="*{actual}" />
                 </div>
                 <div class="form-group">
                     <label for="targetInput">Target</label>
-                    <input class="form-control" type="text" name="target" id="targetInput">
-                    <p th:if="${#fields.hasErrors('target')}" th:errors="*{target}">Target errors</p>
-                    <small class="form-text text-muted">
-                        What was your sales target?
-                    </small>
-                    <div class="invalid-feedback">Target is mandatory.</div>
+                    <input class="form-control" type="text" name="target" id="targetInput"
+                           placeholder="What was your sales target? e.g. 100">
+                    <p class="validation-text" th:if="${#fields.hasErrors('target')}" th:errors="*{target}" />
                 </div>
                 <div class="form-group">
                     <label for="motcInput">MOTC</label>
-                    <input class="form-control" type="text" name="motc" id="motcInput">
-                    <p th:if="${#fields.hasErrors('motc')}" th:errors="*{motc}">Motc errors</p>
-                    <small class="form-text text-muted">
-                        Monthly On Target Commission.
-                    </small>
-                    <div class="invalid-feedback">MOTC is mandatory.</div>
+                    <input class="form-control" type="text" name="motc" id="motcInput"
+                           placeholder="Monthly On-Target Commission. e.g. 5000">
+                    <p class="validation-text" th:if="${#fields.hasErrors('motc')}" th:errors="*{motc}" />
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn  btn-info">Submit</button>
@@ -58,8 +49,8 @@
             </form>
         </div>
     </div>
-    <div class="container outputZoneOuter col-12">
-        <div class="container outputZoneInner col-md-8">
+    <div class="container output-zone-outer col-12">
+        <div class="container output-zone-inner col-md-8">
             <div class="row justify-content-center">
                 <p>Your results:</p>
             </div>
@@ -81,6 +72,6 @@
 </main>
 <script type="text/javascript" th:src="@{/js/jquery/jquery-3.5.1.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap-4.5.2-dist/bootstrap.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/calculator.js}"></script>
+<!--<script type="text/javascript" th:src="@{/js/calculator.js}"></script>-->
 </body>
 </html>
