@@ -13,16 +13,23 @@ public class CommissionRateCalculatorService {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(CommissionRateCalculatorService.class);
 
+    /***
+     * This method calculates the commission rate based off the achievement and rate range. The method checks requisite
+     * values for null and fails early if this is the case. The error message in unspecific so as not to leak
+     * implementation detail.
+     *
+     * @param commission
+     * @return commissionRate
+     */
     public static Float calculateCommissionRate(Commission commission) {
-        Float commissionRate = null;
-        RateRange rateRange = findRateRange(commission.getAchievement());
-        Float base = rateRange.getBase();
-        Float rate = rateRange.getRate();
-
-        if (base != null && rate != null) {
-            commissionRate = base + ((commission.getAchievement() - rateRange.getAchievementFloor()) * rate);
+        Float achievement = commission.getAchievement();
+        RateRange rateRange = findRateRange(achievement);
+        if (achievement == null || rateRange == null) {
+            throw new IllegalArgumentException("Error encountered during commission rate calculation.");
         }
 
+        Float commissionRate = rateRange.getBase() + ((achievement - rateRange.getAchievementFloor())
+                * rateRange.getRate());
         commissionRate = CommissionatorUtils.roundToTwoDecimals(commissionRate);
         LOGGER.info("Commission rate calculated: " + commissionRate);
         return commissionRate;
