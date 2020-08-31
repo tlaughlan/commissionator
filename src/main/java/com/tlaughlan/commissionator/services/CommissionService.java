@@ -13,13 +13,13 @@ public class CommissionService {
     public static final Logger LOGGER = LoggerFactory.getLogger(CommissionService.class);
 
     /***
-     * This method uses the other services in the program to produce the total commission figure. The method will fail
-     * early if requisite inputs are not initialised. Other requisite inputs such as "actual" and "target" are checked
-     * for within the appropriate service which handles them directly. The error message in unspecific so as not to leak
-     * implementation detail.
+     * This method uses the other services in the application to produce the total commission figure. The method will
+     * fail early if requisite inputs are not initialised. Other requisite inputs such as "actual" and "target" are
+     * checked for within the appropriate service which handles them directly. The error message in unspecific so as not
+     * to leak implementation detail.
      *
      * @param commission
-     * @return
+     * @return commission
      */
     public static Commission calculateTotalCommission(Commission commission) {
         Integer motc = commission.getMotc();
