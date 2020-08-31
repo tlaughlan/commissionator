@@ -3,6 +3,7 @@ package com.tlaughlan.commissionator.services;
 import com.tlaughlan.commissionator.models.Commission;
 import com.tlaughlan.commissionator.pojos.CommissionRates;
 import com.tlaughlan.commissionator.pojos.RateRange;
+import com.tlaughlan.commissionator.util.CommissionatorUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,13 +16,11 @@ public class CommissionRateCalculatorService {
         Float rate = rateRange.getRate();
 
         if (base != null && rate != null) {
-            commissionRate = base + ((commission.getAchievement() - base) * rate);
+            commissionRate = base + ((commission.getAchievement() - rateRange.getAchievementFloor()) * rate);
         }
 
-        return commissionRate;
+        return CommissionatorUtils.roundToTwoDecimals(commissionRate);
     }
-
-
 
     private static RateRange findRateRange(Float achievement) {
         RateRange rateRange = null;

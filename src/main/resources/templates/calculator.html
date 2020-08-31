@@ -49,23 +49,23 @@
             </form>
         </div>
     </div>
-    <div class="container output-zone-outer col-12">
+    <div th:if="${commission.totalCommission >= 0.0}" class="container output-zone-outer col-12">
         <div class="container output-zone-inner col-md-8">
             <div class="row justify-content-center">
                 <p>Your results:</p>
             </div>
             <div class="row">
                 <div class="col-md-3"><p>Achievement:</p></div>
-                <div class="col-md-3"><b><p th:text="${name}" /></b></div>
+                <div class="col-md-3"><b><p th:text="${commission.achievement}" /></b></div>
             </div>
             <div class="row">
                 <div class="col-md-3"><p>Commission rate:</p></div>
-                <div class="col-md-3"><b><p th:text="${name}" /></b></div>
+                <div class="col-md-3"><b><p th:text="${commission.commissionRate}" /></b></div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-md-3"><h4>Commission:</h4></div>
-                <div class="col-md-3"><h4 class="success"><p th:text="'$'+${name}" /></h4></div>
+                <div class="col-md-3"><h4 class="success"><p th:text="'$'+${commission.totalCommission}" /></h4></div>
             </div>
         </div>
     </div>

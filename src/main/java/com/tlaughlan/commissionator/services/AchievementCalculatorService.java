@@ -1,6 +1,7 @@
 package com.tlaughlan.commissionator.services;
 
 import com.tlaughlan.commissionator.models.Commission;
+import com.tlaughlan.commissionator.util.CommissionatorUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,15 +15,10 @@ public class AchievementCalculatorService {
         Integer target = commission.getTarget();
 
         if (actual != null && target != null) {
-            achievement = roundToTwoDecimals((float) actual/target);
+            achievement = CommissionatorUtils.roundToTwoDecimals((float) actual/target);
         }
 
         return adjustForCap(achievement);
-    }
-
-    private static Float roundToTwoDecimals(Float number) {
-        double roundedNumber = Math.round(number * 100.0) / 100.0;
-        return (float) roundedNumber;
     }
 
     private static Float adjustForCap(Float achievement) {
