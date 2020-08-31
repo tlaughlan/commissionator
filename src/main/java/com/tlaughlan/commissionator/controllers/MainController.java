@@ -16,7 +16,7 @@ public class MainController {
     public String showCalc(Commission commission) { return "calculator"; }
 
     @PostMapping("/calculator")
-    public String checkInputDetails(@Valid Commission commission, BindingResult bindingResult)  {
+    public String processCommission(@Valid Commission commission, BindingResult bindingResult)  {
 
         if (bindingResult.hasErrors()) {
             return "calculator";
