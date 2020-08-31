@@ -1,5 +1,8 @@
 package com.tlaughlan.commissionator.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CommissionatorUtils {
 
     /***
