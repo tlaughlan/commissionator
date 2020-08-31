@@ -1,4 +1,4 @@
-package com.tlaughlan.commissionator.models;
+package com.tlaughlan.commissionator.pojos;
 
 import com.tlaughlan.commissionator.pojos.CommissionRates;
 import com.tlaughlan.commissionator.pojos.RateRange;
