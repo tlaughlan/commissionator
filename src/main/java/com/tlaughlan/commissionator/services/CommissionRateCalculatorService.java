@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class CommissionRateCalculatorService {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(CommissionRateCalculatorService.class);
+    public static final String COMMISSION_RATE_GENERAL_ERROR = "Error encountered during commission rate calculation.";
 
     /***
      * This method calculates the commission rate based off the achievement and rate range. The method checks requisite
@@ -24,8 +25,8 @@ public class CommissionRateCalculatorService {
     public static Float calculateCommissionRate(Commission commission) {
         Float achievement = commission.getAchievement();
         RateRange rateRange = findRateRange(achievement);
-        if (achievement == null || rateRange == null) {
-            throw new IllegalArgumentException("Error encountered during commission rate calculation.");
+        if (rateRange == null) {
+            throw new IllegalArgumentException (COMMISSION_RATE_GENERAL_ERROR);
         }
 
         Float commissionRate = rateRange.getBase() + ((achievement - rateRange.getAchievementFloor())
@@ -36,6 +37,9 @@ public class CommissionRateCalculatorService {
     }
 
     private static RateRange findRateRange(Float achievement) {
+        if (achievement == null) {
+            throw new IllegalArgumentException(COMMISSION_RATE_GENERAL_ERROR);
+        }
         RateRange rateRange = null;
         CommissionRates commissionRates = new CommissionRates();
 
