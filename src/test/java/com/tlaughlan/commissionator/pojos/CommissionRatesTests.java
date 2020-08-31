@@ -1,7 +1,5 @@
 package com.tlaughlan.commissionator.pojos;
 
-import com.tlaughlan.commissionator.pojos.CommissionRates;
-import com.tlaughlan.commissionator.pojos.RateRange;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
