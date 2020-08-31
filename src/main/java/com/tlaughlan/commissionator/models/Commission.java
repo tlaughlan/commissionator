@@ -9,17 +9,17 @@ import javax.validation.constraints.Positive;
 
 public class Commission {
 
-    @NotNull(message = Constants.nullMessage)
-    @Positive(message = Constants.positiveIntegerMessage)
+    @NotNull(message = Constants.NULL_MESSAGE)
+    @Positive(message = Constants.POSITIVE_INTEGER_MESSAGE)
     private Integer actual;
 
-    @NotNull(message = Constants.nullMessage)
-    @Min(value = 1, message = Constants.minIntegerMessage)
+    @NotNull(message = Constants.NULL_MESSAGE)
+    @Min(value = 1, message = Constants.MIN_INTEGER_MESSAGE)
     private Integer target;
 
-    @NotNull(message = Constants.nullMessage)
-    @Min(value = 1, message = Constants.numberRangeMessage)
-    @Max(value = 10000, message = Constants.numberRangeMessage)
+    @NotNull(message = Constants.NULL_MESSAGE)
+    @Min(value = 1, message = Constants.NUMBER_RANGE_MESSAGE)
+    @Max(value = 10000, message = Constants.NUMBER_RANGE_MESSAGE)
     private Integer motc;
 
     private Float achievement;
