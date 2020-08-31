@@ -4,10 +4,14 @@ import com.tlaughlan.commissionator.models.Commission;
 import com.tlaughlan.commissionator.pojos.CommissionRates;
 import com.tlaughlan.commissionator.pojos.RateRange;
 import com.tlaughlan.commissionator.util.CommissionatorUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommissionRateCalculatorService {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(CommissionRateCalculatorService.class);
 
     public static Float calculateCommissionRate(Commission commission) {
         Float commissionRate = null;
@@ -19,7 +23,9 @@ public class CommissionRateCalculatorService {
             commissionRate = base + ((commission.getAchievement() - rateRange.getAchievementFloor()) * rate);
         }
 
-        return CommissionatorUtils.roundToTwoDecimals(commissionRate);
+        commissionRate = CommissionatorUtils.roundToTwoDecimals(commissionRate);
+        LOGGER.info("Commission rate calculated: " + commissionRate);
+        return commissionRate;
     }
 
     private static RateRange findRateRange(Float achievement) {

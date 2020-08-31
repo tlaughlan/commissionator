@@ -2,12 +2,15 @@ package com.tlaughlan.commissionator.services;
 
 import com.tlaughlan.commissionator.models.Commission;
 import com.tlaughlan.commissionator.util.CommissionatorUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AchievementCalculatorService {
 
-    private static Float achievementCap = 99.98f;
+    private static final Logger LOGGER = LoggerFactory.getLogger(AchievementCalculatorService.class);
+    private static final Float achievementCap = 99.98f;
 
     public static Float calculateAchievement(Commission commission) {
         Float achievement = null;
@@ -18,7 +21,9 @@ public class AchievementCalculatorService {
             achievement = CommissionatorUtils.roundToTwoDecimals((float) actual/target);
         }
 
-        return adjustForCap(achievement);
+        achievement = adjustForCap(achievement);
+        LOGGER.info("Achievement calculated: " + achievement);
+        return achievement;
     }
 
     private static Float adjustForCap(Float achievement) {
