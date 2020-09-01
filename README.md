@@ -37,4 +37,15 @@ integer equal to or greater than 0.
  - Spring Boot Framework for swift and reliable development in the MVC pattern.
  - Java 8 at language level.
  
+ ### Testing the application
+ 
+ To run the unit tests, simply execute the test phase of Maven's build lifecycle, `mvn test`. Jacoco will produce a 
+ coverage report at `/target/site/jacoco/index.html` which can be used to view the project's line coverage. It should
+ look something like this:
+ 
+ ![line_coverage_report](https://github.com/tlaughlan/commissionator/blob/master/src/main/resources/line_coverage_report.PNG)
+ 
+ Jacoco has been configured to maintain the project's line coverage at 95%+. If the coverage falls bellow this standard
+ the build will fail.
+ 
  
