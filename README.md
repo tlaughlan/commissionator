@@ -62,19 +62,19 @@ integer equal to or greater than 0.
  This project has been an excellent learning experience. As someone who had minimal practical experience with Spring 
  there was a lot to learn. Thank goodness for all the Spring.io guides!
  
- ##### Challenges
+ #### Challenges
  
  For the input validation I decided to focus on implementing server-side checks instead of doing it before submission 
  in the frontend. This was a deliberate choice for the sake of learning. I found the `javax.validation.constraints` 
  annotations to be useful and intuitive. The main challenge was getting the validated model to interact properly with 
  the controller. Once I learned how to use the BindingResult object to pass the errors things fell into place.
  
- At first I was confused about how to unit test the controller. Unit test by nature should be as isolated as possible
+ At first I was confused about how to unit test the controller. Unit tests by nature should be as isolated as possible
  but the controller seemed so strongly coupled to the other parts of the application to me that I was unsure how I would
  test it. Once I learned that I could use the `@AutoConfigureMockMvc` annotation to provide a mocked context I was very
  impressed at how simple it was to craft the test http requests and assert based on the responses.
  
- ##### If I could go back in time...
+ #### If I could go back in time...
  
  I regret the way that I decided to pass the Commission object around the whole application. I should have written the 
  services so that they provided values for the commission object to consume instead of making operations on the object
@@ -88,9 +88,9 @@ integer equal to or greater than 0.
  
  One of Spring MVC's strengths is its ability to use multiple view templates. I wish I had implemented multiple 
  templates instead of just putting the whole calculator into one html file. Perhaps I could have implemented a results 
- template which would have simplified handling of the completed Commission model object.
+ template which would have simplified handling the completed Commission model object.
  
- ##### Future improvements
+ #### Future improvements
  
  If I were to work on this project more in the future, or produce another one like it, there are a few things I'd like
  to try:
@@ -98,4 +98,4 @@ integer equal to or greater than 0.
  - Using JSP instead of Thymeleaf so that I can see how the Spring view layer works natively.
  - Producing a more mature frontend. I didn't focus on frontend much in this project since I was mainly learning to 
  implement Spring's server-side concepts. I wonder how mature scale Spring MVC apps structure their frontend...
- - Implement Sass CSS so I can build a light/dark mode toggle into the header! :last_quarter_moon_with_face: :sun_with_face:
+ - Implement Sass CSS so I can build a light/dark mode toggle into the header! :new_moon: :sun_with_face:
