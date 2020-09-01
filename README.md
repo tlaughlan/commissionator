@@ -39,13 +39,16 @@ integer equal to or greater than 0.
  
  ### Testing the application
  
- To run the unit tests, simply execute the test phase of Maven's build lifecycle, `mvn test`. Jacoco will produce a 
+ To run the unit tests, simply execute the test phase of Maven's build lifecycle, `mvn test`. If you wish to trigger 
+ Jacoco's test coverage reporting then run `mvn verify` or some later build lifecycle phase. Jacoco will produce a 
  coverage report at `/target/site/jacoco/index.html` which can be used to view the project's line coverage. It should
  look something like this:
  
  ![line_coverage_report](https://github.com/tlaughlan/commissionator/blob/master/src/main/resources/line_coverage_report.PNG)
  
  Jacoco has been configured to maintain the project's line coverage at 95%+. If the coverage falls bellow this standard
- the build will fail.
+ the build will fail. Note that the `com.tlaughlan.commissionator.constants` package and the 
+ `com/tlaughlan/commissionator/CommissionatorApplication.java` file have been excluded from the test coverage checks 
+ since their functionality is minimal and need not be unit tested.
  
  
